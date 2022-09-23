@@ -67,6 +67,7 @@ options()
 while option == "E" or "D":
     if option == "E":
         encryption()
+        option = ""
     if option == "D":
         decryption()
     else:
