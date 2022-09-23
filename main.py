@@ -40,6 +40,13 @@ def decryption():
     print(decryptedmessage)
 
 
+def options():
+    time.sleep(3)
+    print("->What would you like to do?\n>Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
+    option = input()
+    option = option.upper()
+
+
 print("->Hello!\n->Press Enter To Continue")
 input()
 print("->What day is/was it?")
@@ -48,22 +55,22 @@ print("->What month is/was it?")
 month = input()
 print("->What year is/was it?")
 year = input()
+
 shift = month + day + year
 shift = int(shift)
 mathhold = shift // len(alpha)
 shift = shift - (len(alpha) * mathhold)
-print("->What would you like to do?\n>Encrypt(en)\n>Decrypt(de)\n>Exit(any key)")
-option = input().upper()
 
+option = ""
+options()
 
-while option == "EN" or "DE":
-    if option == "EN":
+while option == "E" or "D":
+    if option == "E":
         encryption()
-    if option == "DE":
+    if option == "D":
         decryption()
-    time.sleep(1)
-    print("->What would you like to do?\n>Encrypt(en)\n>Decrypt(de)\n>Exit(any key)")
-    option = input().upper()
-    if option != "EN" or "DE":
+    else:
+        options()
+    if option != "E" or "D":
         break
 print("->Have a good day")
