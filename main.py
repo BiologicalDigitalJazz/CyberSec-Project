@@ -1,3 +1,6 @@
+import time
+
+
 alpha = ["A", "1", "B", "2", "C", "3", "D", "4", "E", "5", "F", "6", "G", "7", "H", "8", "I", "9", "J", "0", "K", "!",
          "L", "@", "M", "#", "N", "$", "O", "%", "P", "^", "Q", "&", "R", "*", "S", "(", "T", ")", "U", "_", "V", "+",
          "W", "-", "X", "=", "Y", "`", "Z", "~", "z", "[", "y", "]", "x", "\\", "w", ";", "v", "’", "u", ".", "t", "/",
@@ -58,6 +61,9 @@ while option == "EN" or "DE":
         encryption()
     if option == "DE":
         decryption()
+    time.sleep(1)
+    print("->What would you like to do?\n>Encrypt(en)\n>Decrypt(de)\n>Exit(any key)")
+    option = input().upper()
     if option != "EN" or "DE":
         break
 print("->Have a good day")
