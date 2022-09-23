@@ -41,7 +41,8 @@ def decryption():
 
 
 def options():
-    time.sleep(3)
+    global option
+    time.sleep(1.5)
     print("->What would you like to do?\n>Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
     option = input()
     option = option.upper()
@@ -67,11 +68,8 @@ options()
 while option == "E" or "D":
     if option == "E":
         encryption()
-        option = ""
-    if option == "D":
-        decryption()
-    else:
         options()
-    if option != "E" or "D":
-        break
+    elif option == "D":
+        decryption()
+        options()
 print("->Have a good day")
