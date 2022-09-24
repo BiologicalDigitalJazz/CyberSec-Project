@@ -72,4 +72,6 @@ while option == "E" or "D":
     elif option == "D":
         decryption()
         options()
+    else:
+        break
 print("->Have a good day")
