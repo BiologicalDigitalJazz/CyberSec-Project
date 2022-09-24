@@ -9,9 +9,9 @@ alpha = ["A", "1", "B", "2", "C", "3", "D", "4", "E", "5", "F", "6", "G", "7", "
 
 
 def encryption():
-    print("->Enter your message")
+    print("\n->Enter your message")
     messagetoencrypt = input()
-    encryptedmessage = ""
+    encryptedmessage = "\n"
     for x in messagetoencrypt:
         if x in alpha:
             charhold = alpha.index(x) + shift
@@ -25,9 +25,9 @@ def encryption():
 
 
 def decryption():
-    print("->What is the message?")
+    print("\n->What is the message?")
     messagetodecrypt = input()
-    decryptedmessage = ""
+    decryptedmessage = "\n"
     for x in messagetodecrypt:
         if x in alpha:
             charhold = alpha.index(x) - shift
@@ -43,7 +43,7 @@ def decryption():
 def options():
     global option
     time.sleep(1.5)
-    print("->What would you like to do?\n>Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
+    print("\n->What would you like to do?\n>Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
     option = input()
     option = option.upper()
 
@@ -52,9 +52,9 @@ print("->Hello!\n->Press Enter To Continue")
 input()
 print("->What day is/was it?")
 day = input()
-print("->What month is/was it?")
+print("\n->What month is/was it?")
 month = input()
-print("->What year is/was it?")
+print("\n->What year is/was it?")
 year = input()
 
 shift = month + day + year
@@ -74,4 +74,4 @@ while option == "E" or "D":
         options()
     else:
         break
-print("->Have a good day")
+print("\n->Have a good day")
