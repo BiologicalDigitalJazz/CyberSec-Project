@@ -8,6 +8,7 @@ alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", 
          "ü", "┼", "8", "G", "4", "c", "\"", "}", "ª", "k", "U", "g", "à", "⌐", "\\", "$", "`", ">", "£", "╨", "2", "K",
          "l", "T", "6", "ï", "L", "è", "╢", "ó", "ƒ", "v", ":", "b", "^", "J", "]", " "]
 
+shift = 0
 
 def encryption():
     print("\n->Enter your message")
@@ -42,14 +43,29 @@ def decryption():
 
 
 def options():
-    global option
-    print("[C]hange Date\n[E]ncrypt\n[D]ecrypt (d)\n[Q]Quit")
-    option = input()
-    option = option.upper()
+    option = ""
+    while option == "":
+        print("[C]hoose Date\n[E]ncrypt\n[D]ecrypt\n[Q]Quit")
+        option = input()
+        option = option.upper()
+        if option == "C":
+            date()
+            option = ""
+        elif option == "E":
+            encryption()
+            option = ""
+        elif option == "D":
+            decryption()
+            option = ""
+        elif option == "Q":
+            quit()
+        else:
+            print("Invalid Input")
 
 
 # capture date
 def date():
+    global shift
     cnt = 0
     while cnt == 0:
         print("Day:")
@@ -81,16 +97,5 @@ def date():
     mathhold = shift // len(alpha)
     shift = shift - (len(alpha) * mathhold)
 
-option = ""
-options()
 
-while option == "E" or "D":
-    if option == "E":
-        encryption()
-        options()
-    elif option == "D":
-        decryption()
-        options()
-    else:
-        break
-print("\n->Have a good day")
+options()
