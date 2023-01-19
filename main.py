@@ -43,20 +43,45 @@ def decryption():
 
 def options():
     global option
-    print("\n->What would you like to do?\n>Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
+    print("Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
     option = input()
     option = option.upper()
 
 
-print("day")
-day = input()
-print("month")
-month = input()
-print("Year")
-year = input()
+cnt = 0
+
+while cnt == 0:
+    print("day")
+    day = input()
+    day = int(day)
+    if day in range(0, 32):
+        cnt = 1
+    else:
+        print("Invalid Date")
+
+cnt = 0
+
+while cnt == 0:
+    print("month")
+    month = input()
+    month = int(month)
+    if month in range(0, 13):
+        cnt = 1
+    else:
+        print("Invalid Date")
+
+cnt = 0
+
+while cnt == 0:
+    print("Year")
+    year = input()
+    year = int(year)
+    if year >= 0:
+        cnt = 1
+    else:
+        print("Invalid Date")
 
 shift = month + day + year
-shift = int(shift)
 mathhold = shift // len(alpha)
 shift = shift - (len(alpha) * mathhold)
 
