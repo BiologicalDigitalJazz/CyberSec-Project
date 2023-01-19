@@ -1,3 +1,5 @@
+import keyboard
+
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
          "(", "3", "╧", "Ö", "ú", "Æ", "P", "α", "7", "X", "<", "{", "S", "/", "x", "╡", "I", "ñ", "┬", "!", "╙", "Ü",
          "O", "┘", "í", "o", "A", ",", "¡", "ì", "½", "n", "0", "ß", "\'", "╗", "Å", "%", "╩", "E", "┴", "¬", "═", "╖",
@@ -46,25 +48,20 @@ def decryption():
 
 
 def options():
-    option = ""
-    while option == "":
-        print("[C]hoose Date\n[E]ncrypt\n[D]ecrypt\n[Q]Quit")
-        option = input()
-        option = option.upper()
-        if option == "C":
+    option = 1
+    print("\n[C]hoose Date\n[E]ncrypt\n[D]ecrypt\n[Q]Quit")
+    while 1 == 1:
+        if keyboard.is_pressed("c"):
             date()
-            option = ""
-        elif option == "E":
+            options()
+        elif keyboard.is_pressed("e"):
             encryption()
-            option = ""
-        elif option == "D":
+            options()
+        elif keyboard.is_pressed("d"):
             decryption()
-            option = ""
-        elif option == "Q":
+            options()
+        elif keyboard.is_pressed("q"):
             quit()
-        else:
-            print("Invalid Input")
-            option = ""
 
 
 # capture date
@@ -72,7 +69,7 @@ def date():
     global shift
     cnt = 0
     while cnt == 0:
-        print("Month")
+        print("\nMonth:")
         month = input()
         month = int(month)
         if month in range(0, 13):
@@ -81,7 +78,7 @@ def date():
             print("Invalid Date")
     cnt = 0
     while cnt == 0:
-        print("Day:")
+        print("\nDay:")
         day = input()
         day = int(day)
         if day in range(0, 32):
@@ -90,7 +87,7 @@ def date():
             print("Invalid Date")
     cnt = 0
     while cnt == 0:
-        print("Year")
+        print("\nYear:")
         year = input()
         year = int(year)
         if year >= 0:
