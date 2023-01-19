@@ -43,47 +43,43 @@ def decryption():
 
 def options():
     global option
-    print("Encrypt (e)\n>Decrypt (d)\n>Exit (x)")
+    print("[C]hange Date\n[E]ncrypt\n[D]ecrypt (d)\n[Q]Quit")
     option = input()
     option = option.upper()
 
 
-cnt = 0
-
-while cnt == 0:
-    print("day")
-    day = input()
-    day = int(day)
-    if day in range(0, 32):
-        cnt = 1
-    else:
-        print("Invalid Date")
-
-cnt = 0
-
-while cnt == 0:
-    print("month")
-    month = input()
-    month = int(month)
-    if month in range(0, 13):
-        cnt = 1
-    else:
-        print("Invalid Date")
-
-cnt = 0
-
-while cnt == 0:
-    print("Year")
-    year = input()
-    year = int(year)
-    if year >= 0:
-        cnt = 1
-    else:
-        print("Invalid Date")
-
-shift = month + day + year
-mathhold = shift // len(alpha)
-shift = shift - (len(alpha) * mathhold)
+# capture date
+def date():
+    cnt = 0
+    while cnt == 0:
+        print("Day:")
+        day = input()
+        day = int(day)
+        if day in range(0, 32):
+            cnt = 1
+        else:
+            print("Invalid Date")
+    cnt = 0
+    while cnt == 0:
+        print("Month")
+        month = input()
+        month = int(month)
+        if month in range(0, 13):
+            cnt = 1
+        else:
+            print("Invalid Date")
+    cnt = 0
+    while cnt == 0:
+        print("Year")
+        year = input()
+        year = int(year)
+        if year >= 0:
+            cnt = 1
+        else:
+            print("Invalid Date")
+    shift = month + day + year
+    mathhold = shift // len(alpha)
+    shift = shift - (len(alpha) * mathhold)
 
 option = ""
 options()
