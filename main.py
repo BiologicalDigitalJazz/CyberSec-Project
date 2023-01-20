@@ -19,25 +19,33 @@ checkfail = 0
 # Entry Boxes
 bw = 5
 
-encryptlabel = Label(root, text="Text")
-encryptlabel.grid(row=6, column=0)
-encryptinput = Entry(root, borderwidth=bw)
-encryptinput.grid(row=7, column=0)
-
+months = ["[1]January", "[2]February", "[3]March", "[4]April", "[5]May", "[6]June", "[7]July",
+          "[8]August", "[9]September", "[10]October", "[11]November", "[12]December"]
+monthdrop = StringVar()
+monthdrop.set(months[0])
 monthlabel = Label(root, text="Month")
-monthlabel.grid(row=0, column=0)
-monthinput = Entry(root, borderwidth=bw)
-monthinput.grid(row=1, column=0)
+monthlabel.grid(row=0)
+monthinput = OptionMenu(root, monthdrop, *months)
+monthinput.grid(row=1)
 
+days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        31]
+daydrop = IntVar()
+daydrop.set(1)
 daylabel = Label(root, text="Day")
-daylabel.grid(row=2, column=0)
-dayinput = Entry(root, borderwidth=bw)
-dayinput.grid(row=3, column=0)
+daylabel.grid(row=2)
+dayinput = OptionMenu(root, daydrop, *days)
+dayinput.grid(row=3)
 
 yearlabel = Label(root, text="Year")
-yearlabel.grid(row=4, column=0)
+yearlabel.grid(row=4)
 yearinput = Entry(root, borderwidth=bw)
-yearinput.grid(row=5, column=0)
+yearinput.grid(row=5)
+
+encryptlabel = Label(root, text="Text")
+encryptlabel.grid(row=6)
+encryptinput = Entry(root, borderwidth=bw)
+encryptinput.grid(row=7)
 
 # Buttons
 width = 50
@@ -47,13 +55,13 @@ height = 10
 # Date
 def date():
     global shift, checkfail
-    month = monthinput.get()
-    month = int(month)
-    day = dayinput.get()
+    month = monthdrop.get()
+    month = months.index(month) + 1
+    day = daydrop.get()
     day = int(day)
     year = yearinput.get()
     year = int(year)
-    if month in range(1, 13) and day in range(1, 32) and year >= 0:
+    if year >= 0:
         shift = month + day + year
         mathhold = shift // len(alpha)
         shift = shift - (len(alpha) * mathhold)
@@ -84,7 +92,7 @@ def encryption():
 
 
 enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
-enbutton.grid(row=8, column=0)
+enbutton.grid(row=8)
 
 
 # Decrypt
@@ -107,7 +115,7 @@ def decryption():
 
 
 debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
-debutton.grid(row=9, column=0)
+debutton.grid(row=9)
 
 root.mainloop()
 
