@@ -19,24 +19,24 @@ shift = 0
 bw = 5
 
 encryptlabel = Label(root, text="Text")
-encryptlabel.grid(row=3, column=0)
+encryptlabel.grid(row=6, column=0)
 encryptinput = Entry(root, borderwidth=bw)
-encryptinput.grid(row=3, column=1)
+encryptinput.grid(row=7, column=0)
 
 monthlabel = Label(root, text="Month")
 monthlabel.grid(row=0, column=0)
 monthinput = Entry(root, borderwidth=bw)
-monthinput.grid(row=0, column=1)
+monthinput.grid(row=1, column=0)
 
 daylabel = Label(root, text="Day")
-daylabel.grid(row=1, column=0)
+daylabel.grid(row=2, column=0)
 dayinput = Entry(root, borderwidth=bw)
-dayinput.grid(row=1, column=1)
+dayinput.grid(row=3, column=0)
 
 yearlabel = Label(root, text="Year")
-yearlabel.grid(row=2, column=0)
+yearlabel.grid(row=4, column=0)
 yearinput = Entry(root, borderwidth=bw)
-yearinput.grid(row=2, column=1)
+yearinput.grid(row=5, column=0)
 
 # Buttons
 width = 50
@@ -52,9 +52,13 @@ def date():
     day = int(day)
     year = yearinput.get()
     year = int(year)
-    shift = month + day + year
-    mathhold = shift // len(alpha)
-    shift = shift - (len(alpha) * mathhold)
+    if month in range(0, 13) and day in range(0, 32) and year >= 0:
+        shift = month + day + year
+        mathhold = shift // len(alpha)
+        shift = shift - (len(alpha) * mathhold)
+    else:
+        message = Label(root, text="Invalid Date")
+        message.grid(column=0)
 
 
 # Encrypt
@@ -72,11 +76,11 @@ def encryption():
         else:
             encryptedmessage += x
     message = Label(root, text=encryptedmessage)
-    message.grid(column=0, columnspan=2)
+    message.grid(column=0)
 
 
 enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
-enbutton.grid(row=4, column=0)
+enbutton.grid(row=8, column=0)
 
 
 # Decrypt
@@ -94,11 +98,11 @@ def decryption():
         else:
             decryptedmessage += x
     message = Label(root, text=decryptedmessage)
-    message.grid(column=2)
+    message.grid(column=0)
 
 
 debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
-debutton.grid(row=4, column=1)
+debutton.grid(row=9, column=0)
 
 root.mainloop()
 
