@@ -14,6 +14,7 @@ alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", 
          "K", "l", "T", "6", "ï", "L", "è", "╢", "ó", "ƒ", "v", ":", "b", "^", "J", "]", " "]
 
 shift = 0
+checkfail = 0
 
 # Entry Boxes
 bw = 5
@@ -45,38 +46,41 @@ height = 10
 
 # Date
 def date():
-    global shift
+    global shift, checkfail
     month = monthinput.get()
     month = int(month)
     day = dayinput.get()
     day = int(day)
     year = yearinput.get()
     year = int(year)
-    if month in range(0, 13) and day in range(0, 32) and year >= 0:
+    if month in range(1, 13) and day in range(1, 32) and year >= 0:
         shift = month + day + year
         mathhold = shift // len(alpha)
         shift = shift - (len(alpha) * mathhold)
+        checkfail = 0
     else:
         message = Label(root, text="Invalid Date")
         message.grid(column=0)
+        checkfail = 1
 
 
 # Encrypt
 def encryption():
     date()
-    messagetoencrypt = encryptinput.get()
-    encryptedmessage = ""
-    for x in messagetoencrypt:
-        if x in alpha:
-            charhold = alpha.index(x) + shift
-            if charhold >= len(alpha):
-                charhold -= len(alpha)
-            charhold = alpha[charhold]
-            encryptedmessage += charhold
-        else:
-            encryptedmessage += x
-    message = Label(root, text=encryptedmessage)
-    message.grid(column=0)
+    if checkfail == 0:
+        messagetoencrypt = encryptinput.get()
+        encryptedmessage = ""
+        for x in messagetoencrypt:
+            if x in alpha:
+                charhold = alpha.index(x) + shift
+                if charhold >= len(alpha):
+                    charhold -= len(alpha)
+                charhold = alpha[charhold]
+                encryptedmessage += charhold
+            else:
+                encryptedmessage += x
+        message = Label(root, text=encryptedmessage)
+        message.grid(column=0)
 
 
 enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
@@ -86,19 +90,20 @@ enbutton.grid(row=8, column=0)
 # Decrypt
 def decryption():
     date()
-    messagetodecrypt = encryptinput.get()
-    decryptedmessage = ""
-    for x in messagetodecrypt:
-        if x in alpha:
-            charhold = alpha.index(x) - shift
-            if charhold < 0:
-                charhold = charhold + len(alpha)
-            charhold = alpha[charhold]
-            decryptedmessage += charhold
-        else:
-            decryptedmessage += x
-    message = Label(root, text=decryptedmessage)
-    message.grid(column=0)
+    if checkfail == 0:
+        messagetodecrypt = encryptinput.get()
+        decryptedmessage = ""
+        for x in messagetodecrypt:
+            if x in alpha:
+                charhold = alpha.index(x) - shift
+                if charhold < 0:
+                    charhold = charhold + len(alpha)
+                charhold = alpha[charhold]
+                decryptedmessage += charhold
+            else:
+                decryptedmessage += x
+        message = Label(root, text=decryptedmessage)
+        message.grid(column=0)
 
 
 debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
