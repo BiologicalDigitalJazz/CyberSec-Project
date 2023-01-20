@@ -17,9 +17,8 @@ shift = 0
 
 
 def encryption():
-    print("\nEnter your message")
-    messagetoencrypt = input()
-    encryptedmessage = "\n"
+    messagetoencrypt = encryptinput.get()
+    encryptedmessage = ""
     for x in messagetoencrypt:
         if x in alpha:
             charhold = alpha.index(x) + shift
@@ -29,7 +28,8 @@ def encryption():
             encryptedmessage += charhold
         else:
             encryptedmessage += x
-    print(encryptedmessage)
+    message = Label(root, text=encryptedmessage)
+    message.grid(row=2, column=2)
 
 
 def decryption():
@@ -83,12 +83,18 @@ def date():
     shift = shift - (len(alpha) * mathhold)
 
 
-datebutton = Button(root, text="Set Date", padx=50, pady=25, command=date)
+encryptinput = Entry(root, borderwidth=5)
+encryptinput.grid(row=0, column=2)
+
+datebutton = Button(root, text="Set Date", padx=50, pady=25, command=date, fg="white", bg="black")
 datebutton.grid(row=1, column=1)
+
 enbutton = Button(root, text="Encrypt", padx=50, pady=25, command=encryption)
 enbutton.grid(row=1, column=2)
+
 debutton = Button(root, text="Decrypt", padx=50, pady=25, command=decryption)
 debutton.grid(row=1, column=3)
+
 root.mainloop()
 
 quit()
