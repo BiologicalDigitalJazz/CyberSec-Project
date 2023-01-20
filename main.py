@@ -15,55 +15,51 @@ alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", 
 
 shift = 0
 
-# Text Box
-encryptinput = Entry(root, borderwidth=5)
-encryptinput.grid(row=0, column=2)
+# Entry Boxes
+bw = 5
+
+encryptlabel = Label(root, text="Text")
+encryptlabel.grid(row=3, column=0)
+encryptinput = Entry(root, borderwidth=bw)
+encryptinput.grid(row=3, column=1)
+
+monthlabel = Label(root, text="Month")
+monthlabel.grid(row=0, column=0)
+monthinput = Entry(root, borderwidth=bw)
+monthinput.grid(row=0, column=1)
+
+daylabel = Label(root, text="Day")
+daylabel.grid(row=1, column=0)
+dayinput = Entry(root, borderwidth=bw)
+dayinput.grid(row=1, column=1)
+
+yearlabel = Label(root, text="Year")
+yearlabel.grid(row=2, column=0)
+yearinput = Entry(root, borderwidth=bw)
+yearinput.grid(row=2, column=1)
+
+# Buttons
+width = 50
+height = 10
 
 
 # Date
 def date():
     global shift
-    cnt = 0
-    month = 0
-    day = 0
-    year = 0
-    while cnt == 0:
-        print("\nMonth:")
-        month = input()
-        month = int(month)
-        if month in range(0, 13):
-            cnt = 1
-        else:
-            print("Invalid Date")
-    cnt = 0
-    while cnt == 0:
-        print("\nDay:")
-        day = input()
-        day = int(day)
-        if day in range(0, 32):
-            cnt = 1
-        else:
-            print("Invalid Date")
-    cnt = 0
-    while cnt == 0:
-        print("\nYear:")
-        year = input()
-        year = int(year)
-        if year >= 0:
-            cnt = 1
-        else:
-            print("Invalid Date")
+    month = monthinput.get()
+    month = int(month)
+    day = dayinput.get()
+    day = int(day)
+    year = yearinput.get()
+    year = int(year)
     shift = month + day + year
     mathhold = shift // len(alpha)
     shift = shift - (len(alpha) * mathhold)
 
 
-datebutton = Button(root, text="Set Date", padx=50, pady=25, command=date, fg="white", bg="black")
-datebutton.grid(row=1, column=1)
-
-
 # Encrypt
 def encryption():
+    date()
     messagetoencrypt = encryptinput.get()
     encryptedmessage = ""
     for x in messagetoencrypt:
@@ -76,15 +72,16 @@ def encryption():
         else:
             encryptedmessage += x
     message = Label(root, text=encryptedmessage)
-    message.grid(column=2)
+    message.grid(column=0, columnspan=2)
 
 
-enbutton = Button(root, text="Encrypt", padx=50, pady=25, command=encryption)
-enbutton.grid(row=1, column=2)
+enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
+enbutton.grid(row=4, column=0)
 
 
 # Decrypt
 def decryption():
+    date()
     messagetodecrypt = encryptinput.get()
     decryptedmessage = ""
     for x in messagetodecrypt:
@@ -100,8 +97,8 @@ def decryption():
     message.grid(column=2)
 
 
-debutton = Button(root, text="Decrypt", padx=50, pady=25, command=decryption)
-debutton.grid(row=1, column=3)
+debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
+debutton.grid(row=4, column=1)
 
 root.mainloop()
 
