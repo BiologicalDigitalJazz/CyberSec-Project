@@ -1,3 +1,5 @@
+v1.6.4      Made it so text can now be copied once encrypted/decrypted
+            Rearranged GUI
 v1.6.3      Turned Month Entry Box into Drop Down Menu with text
             Turned Day Entry Box into Drop Down Menu
             Removed redundant date validation code, now only applies to year
@@ -24,7 +26,6 @@ v1.2.3      Fixed issues with Date Func
 v1.2.2      Added Date Func into Options
 v1.2.1      Added date validation check
 v1.2        Added full ASCII and extended ASCII support to cypher Index
-v1.1.6      Reformatted some text
 v1.1.6      Reformatted some text
 v1.1.5      Fixed issues with Options
 v1.1.4      Fixed issues with Options
