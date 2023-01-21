@@ -1,6 +1,8 @@
 from tkinter import *
 
 root = Tk()
+root.geometry("300x300")
+root.resizable(False, True)
 
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
          "(", "3", "╧", "Ö", "ú", "Æ", "P", "α", "7", "X", "<", "{", "S", "/", "x", "╡", "I", "ñ", "┬", "!", "╙", "Ü",
@@ -24,29 +26,33 @@ months = ["[1]January", "[2]February", "[3]March", "[4]April", "[5]May", "[6]Jun
 monthdrop = StringVar()
 monthdrop.set(months[0])
 monthlabel = Label(root, text="Month")
-monthlabel.grid(row=0)
+monthlabel.grid(row=0, columnspan=2)
 monthinput = OptionMenu(root, monthdrop, *months)
-monthinput.grid(row=1)
+monthinput.grid(row=1, columnspan=2)
 
 days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
         31]
 daydrop = IntVar()
 daydrop.set(1)
 daylabel = Label(root, text="Day")
-daylabel.grid(row=2)
+daylabel.grid(row=2, columnspan=2)
 dayinput = OptionMenu(root, daydrop, *days)
-dayinput.grid(row=3)
+dayinput.grid(row=3, columnspan=2)
 
 yearlabel = Label(root, text="Year")
-yearlabel.grid(row=4)
-yearinput = Entry(root, borderwidth=bw)
-yearinput.grid(row=5)
+yearlabel.grid(row=4, columnspan=2)
+yearinput = Entry(root, width=5, borderwidth=bw)
+yearinput.grid(row=5, columnspan=2)
 
 encryptlabel = Label(root, text="Text")
-encryptlabel.grid(row=6)
-encryptinput = Entry(root, borderwidth=bw)
-encryptinput.grid(row=7)
+encryptlabel.grid(row=6, columnspan=2)
+encryptinput = Entry(root, width=50, borderwidth=bw)
+encryptinput.grid(row=7, columnspan=2)
 
+finallabel = Label(root, text="En/Decrypted Text")
+finallabel.grid(row=10, columnspan=2)
+finaltext = Entry(root, width=50, borderwidth=bw)
+finaltext.grid(row=11, columnspan=2, rowspan=2)
 # Buttons
 width = 50
 height = 10
@@ -67,8 +73,8 @@ def date():
         shift = shift - (len(alpha) * mathhold)
         checkfail = 0
     else:
-        message = Label(root, text="Invalid Date")
-        message.grid(column=0)
+        finaltext.delete(0, "end")
+        finaltext.insert(0, "Invalid Date")
         checkfail = 1
 
 
@@ -87,12 +93,12 @@ def encryption():
                 encryptedmessage += charhold
             else:
                 encryptedmessage += x
-        message = Label(root, text=encryptedmessage)
-        message.grid(column=0)
+        finaltext.delete(0, "end")
+        finaltext.insert(0, encryptedmessage)
 
 
 enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
-enbutton.grid(row=8)
+enbutton.grid(row=8, column=0)
 
 
 # Decrypt
@@ -110,12 +116,12 @@ def decryption():
                 decryptedmessage += charhold
             else:
                 decryptedmessage += x
-        message = Label(root, text=decryptedmessage)
-        message.grid(column=0)
+        finaltext.delete(0, "end")
+        finaltext.insert(0, decryptedmessage)
 
 
 debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
-debutton.grid(row=9)
+debutton.grid(row=8, column=1)
 
 root.mainloop()
 
