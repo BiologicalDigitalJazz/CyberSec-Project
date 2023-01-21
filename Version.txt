@@ -1,0 +1,34 @@
+v1.6.3      Turned Month Entry Box into Drop Down Menu with text
+            Turned Day Entry Box into Drop Down Menu
+            Removed redundant date validation code, now only applies to year
+v1.6.2      If date validation check is failed, it now properly stops the function and alerts user
+v1.6.1      Readded date validation check (removed in v1.6)
+            Rearranged GUI
+v1.6        Date Func gutted and reworked
+            Removed Change Date button
+            Added Month Entry Box
+            Added Day Entry Box
+            Added Year Entry Box
+v1.5        Code completely reformatted
+            Added Change Date button
+            Added Encrypt button
+            Added Decrypt button
+v1.4.1      GUI partially functional
+v1.4        Added GUI
+            Removed unused and redundant code
+v1.3        Revamped Options
+v1.2.5      Changed date format to mm/dd/yyyy (was dd/mm/yyyy)
+v1.2.4      Added ẞ and ß to Index (German now fully supported)
+v1.2.3      Fixed issues with Date Func
+            Fixed issues with Options
+v1.2.2      Added Date Func into Options
+v1.2.1      Added date validation check
+v1.2        Added full ASCII and extended ASCII support to cypher Index
+v1.1.6      Reformatted some text
+v1.1.6      Reformatted some text
+v1.1.5      Fixed issues with Options
+v1.1.4      Fixed issues with Options
+v1.1.3      Fixed issues with Options
+v1.1.2      Turned Options into a Func
+v1.1        Added Options
+v1          Origin
