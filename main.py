@@ -1,10 +1,10 @@
 from tkinter import *
 
 root = Tk()
-root.geometry("300x300")
+
 root.resizable(False, True)
 
-alpha = ["[", "┤", "╕", "¿", "é", "ö", "₧", "º", "F", "ò", "?", "[", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
+alpha = ["[", "┤", "╕", "¿", "é", "ö", "º", "F", "ò", "?", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
          "(", "3", "╧", "Ö", "ú", "Æ", "P", "α", "7", "X", "<", "{", "S", "/", "x", "╡", "I", "ñ", "┬", "!", "╙", "Ü",
          "O", "┘", "í", "o", "A", ",", "¡", "ì", "½", "n", "0", "ß", "\'", "╗", "Å", "%", "╩", "E", "┴", "¬", "═", "╖",
          "9", "É", "+", "█", "ê", "æ", "╪", "╥", "Y", "w", "m", ";", ".", "▒", "¢", "@", "¼", "╫", "f", "▄", "h",
@@ -45,14 +45,14 @@ yearinput = Entry(root, width=5, borderwidth=bw)
 yearinput.grid(row=5, columnspan=2)
 
 encryptlabel = Label(root, text="Text")
-encryptlabel.grid(row=6, columnspan=2)
-encryptinput = Entry(root, width=50, borderwidth=bw)
-encryptinput.grid(row=7, columnspan=2)
+encryptlabel.grid(row=6, column=0)
+preencryptedtext = Text(root, width=50, borderwidth=bw)
+preencryptedtext.grid(row=7, column=0)
 
-finallabel = Label(root, text="En/Decrypted Text")
-finallabel.grid(row=10, columnspan=2)
-finaltext = Entry(root, width=50, borderwidth=bw)
-finaltext.grid(row=11, columnspan=2, rowspan=2)
+finallabel = Label(root, text="Encrypted Text")
+finallabel.grid(row=6, column=1)
+encryptedtext = Text(root, width=50, borderwidth=bw)
+encryptedtext.grid(row=7, column=1)
 # Buttons
 width = 50
 height = 10
@@ -73,8 +73,8 @@ def date():
         shift = shift - (len(alpha) * mathhold)
         checkfail = 0
     else:
-        finaltext.delete(0, "end")
-        finaltext.insert(0, "Invalid Date")
+        encryptedtext.delete(0, "end")
+        encryptedtext.insert(0, "Invalid Date")
         checkfail = 1
 
 
@@ -82,7 +82,7 @@ def date():
 def encryption():
     date()
     if checkfail == 0:
-        messagetoencrypt = encryptinput.get()
+        messagetoencrypt = preencryptedtext.get("1.0", END)
         encryptedmessage = ""
         for x in messagetoencrypt:
             if x in alpha:
@@ -93,8 +93,8 @@ def encryption():
                 encryptedmessage += charhold
             else:
                 encryptedmessage += x
-        finaltext.delete(0, "end")
-        finaltext.insert(0, encryptedmessage)
+        encryptedtext.delete(1.0, "end")
+        encryptedtext.insert(1.0, encryptedmessage)
 
 
 enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
@@ -105,7 +105,7 @@ enbutton.grid(row=8, column=0)
 def decryption():
     date()
     if checkfail == 0:
-        messagetodecrypt = encryptinput.get()
+        messagetodecrypt = encryptedtext.get("1.0", END)
         decryptedmessage = ""
         for x in messagetodecrypt:
             if x in alpha:
@@ -116,8 +116,8 @@ def decryption():
                 decryptedmessage += charhold
             else:
                 decryptedmessage += x
-        finaltext.delete(0, "end")
-        finaltext.insert(0, decryptedmessage)
+        preencryptedtext.delete(1.0, "end")
+        preencryptedtext.insert(1.0, decryptedmessage)
 
 
 debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
