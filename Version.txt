@@ -1,3 +1,6 @@
+v1.7        Improved GUI greatly
+            Removed a duplicate character in cypher Index
+            Discovered bug when encrypting/decrypting
 v1.6.4      Made it so text can now be copied once encrypted/decrypted
             Rearranged GUI
 v1.6.3      Turned Month Entry Box into Drop Down Menu with text
