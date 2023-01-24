@@ -1,11 +1,19 @@
 from tkinter import *
 
+# colours
+blue = "#7289DA"
+grey = "#2C2F33"
+darkgrey = "#23272A"
+white = "#FFFFFF"
+green = "#2E8B57"
+red = "#DC143C"
+
 root = Tk()
 root.title("Wilson Schema")
-root.configure(bg="black")
+root.configure(bg=darkgrey)
 root.resizable(False, False)
 
-version = Label(root, text="v1.8", fg="blue", bg="black")
+version = Label(root, text="v1.8.1", fg=blue, bg=darkgrey)
 version.place(x=0, y=0)
 
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "º", "F", "ò", "?", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
@@ -29,37 +37,38 @@ months = ["[1]January", "[2]February", "[3]March", "[4]April", "[5]May", "[6]Jun
           "[8]August", "[9]September", "[10]October", "[11]November", "[12]December"]
 monthdrop = StringVar()
 monthdrop.set(months[0])
-monthlabel = Label(root, text="Month", fg="magenta", bg="black")
+monthlabel = Label(root, text="Month", fg=blue, bg=darkgrey)
 monthlabel.grid(row=0, columnspan=2)
 monthinput = OptionMenu(root, monthdrop, *months)
-monthinput.config(bg="black", fg="white")
-monthinput["menu"].config(bg="black", fg="white")
+monthinput.config(bg=darkgrey, fg=white)
+monthinput["menu"].config(fg=white, bg=darkgrey)
 monthinput.grid(row=1, columnspan=2)
 
 days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
         31]
 daydrop = IntVar()
 daydrop.set(1)
-daylabel = Label(root, text="Day", fg="magenta", bg="black")
+daylabel = Label(root, text="Day", fg=blue, bg=darkgrey)
 daylabel.grid(row=2, columnspan=2)
 dayinput = OptionMenu(root, daydrop, *days)
-dayinput.config(bg="black", fg="white")
-dayinput["menu"].config(bg="black", fg="white")
+dayinput.config(bg=darkgrey, fg=white)
+dayinput["menu"].config(bg=darkgrey, fg=white)
 dayinput.grid(row=3, columnspan=2)
 
-yearlabel = Label(root, text="Year", fg="magenta", bg="black")
+yearlabel = Label(root, text="Year", fg=blue, bg=darkgrey)
 yearlabel.grid(row=4, columnspan=2)
-yearinput = Entry(root, width=5, borderwidth=bw, fg="white", bg="black")
+yearinput = Entry(root, width=5, borderwidth=bw, fg=white, bg=darkgrey)
+yearinput.insert(0, "0")
 yearinput.grid(row=5, columnspan=2)
 
-encryptlabel = Label(root, text="Text", fg="magenta", bg="black")
+encryptlabel = Label(root, text="Text", fg=blue, bg=darkgrey)
 encryptlabel.grid(row=6, column=0)
-preencryptedtext = Text(root, width=50, borderwidth=bw, fg="white", bg="black")
+preencryptedtext = Text(root, width=50, borderwidth=bw, fg=white, bg=grey)
 preencryptedtext.grid(row=7, column=0)
 
-finallabel = Label(root, text="Encrypted Text", fg="magenta", bg="black")
+finallabel = Label(root, text="Encrypted Text", fg=blue, bg=darkgrey)
 finallabel.grid(row=6, column=1)
-encryptedtext = Text(root, width=50, borderwidth=bw, fg="white", bg="black")
+encryptedtext = Text(root, width=50, borderwidth=bw, fg=white, bg=grey)
 encryptedtext.grid(row=7, column=1)
 # Buttons
 width = 50
@@ -105,7 +114,7 @@ def encryption():
         encryptedtext.insert(1.0, encryptedmessage)
 
 
-enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="green", bg="black")
+enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg=white, bg=green)
 enbutton.grid(row=8, column=0)
 
 
@@ -128,7 +137,7 @@ def decryption():
         preencryptedtext.insert(1.0, decryptedmessage)
 
 
-debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption, fg="red", bg="black")
+debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption, fg=white, bg=red)
 debutton.grid(row=8, column=1)
 
 root.mainloop()
