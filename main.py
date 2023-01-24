@@ -2,7 +2,7 @@ from tkinter import *
 
 root = Tk()
 
-root.resizable(False, True)
+root.resizable(False, False)
 
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "º", "F", "ò", "?", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
          "(", "3", "╧", "Ö", "ú", "Æ", "P", "α", "7", "X", "<", "{", "S", "/", "x", "╡", "I", "ñ", "┬", "!", "╙", "Ü",
