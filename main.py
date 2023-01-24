@@ -2,10 +2,10 @@ from tkinter import *
 
 root = Tk()
 root.title("Wilson Schema")
-
+root.configure(bg="black")
 root.resizable(False, False)
 
-version = Label(root, text="v1.7.1")
+version = Label(root, text="v1.8", fg="blue", bg="black")
 version.place(x=0, y=0)
 
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "º", "F", "ò", "?", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
@@ -29,33 +29,37 @@ months = ["[1]January", "[2]February", "[3]March", "[4]April", "[5]May", "[6]Jun
           "[8]August", "[9]September", "[10]October", "[11]November", "[12]December"]
 monthdrop = StringVar()
 monthdrop.set(months[0])
-monthlabel = Label(root, text="Month")
+monthlabel = Label(root, text="Month", fg="magenta", bg="black")
 monthlabel.grid(row=0, columnspan=2)
 monthinput = OptionMenu(root, monthdrop, *months)
+monthinput.config(bg="black", fg="white")
+monthinput["menu"].config(bg="black", fg="white")
 monthinput.grid(row=1, columnspan=2)
 
 days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
         31]
 daydrop = IntVar()
 daydrop.set(1)
-daylabel = Label(root, text="Day")
+daylabel = Label(root, text="Day", fg="magenta", bg="black")
 daylabel.grid(row=2, columnspan=2)
 dayinput = OptionMenu(root, daydrop, *days)
+dayinput.config(bg="black", fg="white")
+dayinput["menu"].config(bg="black", fg="white")
 dayinput.grid(row=3, columnspan=2)
 
-yearlabel = Label(root, text="Year")
+yearlabel = Label(root, text="Year", fg="magenta", bg="black")
 yearlabel.grid(row=4, columnspan=2)
-yearinput = Entry(root, width=5, borderwidth=bw)
+yearinput = Entry(root, width=5, borderwidth=bw, fg="white", bg="black")
 yearinput.grid(row=5, columnspan=2)
 
-encryptlabel = Label(root, text="Text")
+encryptlabel = Label(root, text="Text", fg="magenta", bg="black")
 encryptlabel.grid(row=6, column=0)
-preencryptedtext = Text(root, width=50, borderwidth=bw)
+preencryptedtext = Text(root, width=50, borderwidth=bw, fg="white", bg="black")
 preencryptedtext.grid(row=7, column=0)
 
-finallabel = Label(root, text="Encrypted Text")
+finallabel = Label(root, text="Encrypted Text", fg="magenta", bg="black")
 finallabel.grid(row=6, column=1)
-encryptedtext = Text(root, width=50, borderwidth=bw)
+encryptedtext = Text(root, width=50, borderwidth=bw, fg="white", bg="black")
 encryptedtext.grid(row=7, column=1)
 # Buttons
 width = 50
@@ -101,7 +105,7 @@ def encryption():
         encryptedtext.insert(1.0, encryptedmessage)
 
 
-enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="white", bg="black")
+enbutton = Button(root, text="Encrypt", padx=width, pady=height, command=encryption, fg="green", bg="black")
 enbutton.grid(row=8, column=0)
 
 
@@ -124,7 +128,7 @@ def decryption():
         preencryptedtext.insert(1.0, decryptedmessage)
 
 
-debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption)
+debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decryption, fg="red", bg="black")
 debutton.grid(row=8, column=1)
 
 root.mainloop()
