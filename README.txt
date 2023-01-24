@@ -1,9 +1,9 @@
 # CyberSec-Project
 This is a project for my High School Cybersecurity course
 
-The goal of this project is to convert my regular ceasar cypher into something unique 
+The goal of this project is to convert my regular caesar cipher into something unique
 
-The way that the cypher works is technically the same way as a ceasar cypher, but with some big differences
+The way that the cipher works is technically the same way as a caesar cipher, but with some big differences
     The shift is defined by the current date, the month day and year that the message is encrypted is important to be tracked
     The alphabet that is used is randomly scrambled and includes all ASCII characters, so a shift of 1 does not shift a->b, it actually would be a->├
 
