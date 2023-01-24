@@ -141,5 +141,3 @@ debutton = Button(root, text="Decrypt", padx=width, pady=height, command=decrypt
 debutton.grid(row=8, column=1)
 
 root.mainloop()
-
-quit()
