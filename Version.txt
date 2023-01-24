@@ -1,3 +1,7 @@
+v1.7.1      Figured out how to spell cipher and caesar correctly
+            Made window not resizable
+            Added Version number in corner
+            Gave window a title
 v1.7        Improved GUI greatly
             Removed a duplicate character in cipher Index
             Discovered bug when encrypting/decrypting

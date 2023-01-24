@@ -1,8 +1,12 @@
 from tkinter import *
 
 root = Tk()
+root.title("Wilson Schema")
 
 root.resizable(False, False)
+
+version = Label(root, text="v1.7.1")
+version.place(x=0, y=0)
 
 alpha = ["[", "┤", "╕", "¿", "é", "ö", "º", "F", "ò", "?", "╞", "┌", "a", "├", "j", "ô", "╣", "▌", "┐", "R",
          "(", "3", "╧", "Ö", "ú", "Æ", "P", "α", "7", "X", "<", "{", "S", "/", "x", "╡", "I", "ñ", "┬", "!", "╙", "Ü",
